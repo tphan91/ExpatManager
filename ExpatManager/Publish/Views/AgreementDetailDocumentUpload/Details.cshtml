@@ -1,0 +1,13 @@
+﻿@model ExpatManager.Models.AgreementDetailDocumentUpload
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+@Html.Partial("../AgreementDetail/_DisplayForControl", Model.AgreementDetails)
+@Html.Partial("_DisplayForControl", Model)
+@Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)    
+<p>
+    @Html.ActionLink("Back to Agreement Details", "Details", "AgreementDetail", new { id = Model.AgreementDetailID }, null)
+</p>

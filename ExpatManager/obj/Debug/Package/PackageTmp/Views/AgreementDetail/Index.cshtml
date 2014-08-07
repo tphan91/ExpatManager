@@ -1,0 +1,185 @@
+﻿@model PagedList.IPagedList<ExpatManager.Models.AgreementDetail>
+@{
+    ViewBag.Title = "Agreement Detail Index";
+}
+<h2>Agreement Detail
+    Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Search: @Html.TextBox("Search", ViewBag.CurrentFilter as string)
+        &nbsp;
+        <input type="submit" value="Search" /></p>
+}
+<table>
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.ActionLink("Expatriate Name", "Index", new { sortOrder = ViewBag.SortParm1, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Agreement No", "Index", new { sortOrder = ViewBag.SortParm2, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Cost Code", "Index", new { sortOrder = ViewBag.SortParm3, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Start Date", "Index", new { sortOrder = ViewBag.SortParm4, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Expire Date", "Index", new { sortOrder = ViewBag.SortParm5, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Length
+        </th>
+        <th>
+            @Html.ActionLink("Monthly Payment", "Index", new { sortOrder = ViewBag.SortParm6, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Pro Rata Payment", "Index", new { sortOrder = ViewBag.SortParm7, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Pro Rata Payment Date", "Index", new { sortOrder = ViewBag.SortParm8, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Termination Date", "Index", new { sortOrder = ViewBag.SortParm9, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Total Amount", "Index", new { sortOrder = ViewBag.SortParm10, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Comment
+        </th>
+        <th>
+            @Html.ActionLink("Council Name", "Index", new { sortOrder = ViewBag.SortParm11, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Council Tax Amount", "Index", new { sortOrder = ViewBag.SortParm12, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Desposit Amount", "Index", new { sortOrder = ViewBag.SortParm13, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Document", "Index", new { sortOrder = ViewBag.SortParm14, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Create Date Time
+        </th>
+        <th>
+            Create By
+        </th>
+        <th>
+            Modified Date Time
+        </th>
+        <th>
+            Modified By
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AgreementDetailID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.AgreementDetailID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AgreementDetailID })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expatriates.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgreementNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpireDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Length)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthlyPayment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProRataPayment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProRataPaymentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TerminationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CouncilName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CouncilTaxAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepositAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    &nbsp;
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { pageNo = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink("< Prev", "Index", new { pageNo = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw("&nbsp;");
+        @:< Prev
+            }
+    &nbsp;
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { pageNo = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink(">>", "Index", new { pageNo = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw("&nbsp;")
+        @:>>
+            }
+</div>

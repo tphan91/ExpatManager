@@ -1,0 +1,98 @@
+﻿@model PagedList.IPagedList<ExpatManager.Models.AgentDetail>
+@{
+    ViewBag.Title = "Agent Detail Index";
+}
+<h2>Agent Detail
+    Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Search: @Html.TextBox("Search", ViewBag.CurrentFilter as string)
+        &nbsp;
+        <input type="submit" value="Search" /></p>
+}
+<table>
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.ActionLink("Agent Name", "Index", new { sortOrder = ViewBag.SortParm1, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Branch", "Index", new { sortOrder = ViewBag.SortParm2, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Address", "Index", new { sortOrder = ViewBag.SortParm3, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Contact Name", "Index", new { sortOrder = ViewBag.SortParm5, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.SortParm4, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("TelNo", "Index", new { sortOrder = ViewBag.SortParm6, currentFilter = ViewBag.CurrentFilter })
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AgentDetailID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.AgentDetailID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AgentDetailID })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BranchOffice)
+            </td>
+            <td>
+                @(String.Format("{0}, {1}, {2}, {3}", item.Address1, item.Address2, item.Address3, item.PostCode).Replace(", ,",""))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TelNo)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    &nbsp;
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { pageNo = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink("< Prev", "Index", new { pageNo = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw("&nbsp;");
+        @:< Prev
+    }
+    &nbsp;
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { pageNo = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink(">>", "Index", new { pageNo = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw("&nbsp;")
+        @:>>
+    }
+</div>

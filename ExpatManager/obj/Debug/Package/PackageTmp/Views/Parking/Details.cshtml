@@ -1,0 +1,12 @@
+﻿@model ExpatManager.Models.Parking
+@{
+    ViewBag.Title = "Parking Table Details";
+}
+<h2>
+    Ceiling Table Details</h2>
+@Html.Partial("_DisplayForControl", Model)
+@Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ParkingID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

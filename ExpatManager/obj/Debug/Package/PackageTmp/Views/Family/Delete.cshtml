@@ -1,0 +1,22 @@
+﻿@model ExpatManager.Models.Family
+@{
+    ViewBag.Title = "Delete Family Member";
+}
+<h2>
+    Delete Family Member</h2>
+<p class="error">@ViewBag.ErrorMessage</p>
+<h3>
+    Are you sure you want to delete this?</h3>
+@using (Html.BeginForm())
+{
+    @Html.Partial("~/Views/Expatriate/_DisplayForControl.cshtml", Model.Expatriates)
+    @Html.Partial("_DisplayForControl", Model)
+    @Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)
+    <p>
+        <input type="submit" value="Delete" />
+        |
+        @Html.ActionLink("Back", "Details", "Expatriate", new { id = Model.ExpatriateID }, null)
+    </p>
+    @Html.HiddenFor(model => model.FamilyID)
+    @Html.HiddenFor(model => model.ExpatriateID)
+}

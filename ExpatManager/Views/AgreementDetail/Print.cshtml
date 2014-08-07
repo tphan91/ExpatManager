@@ -1,0 +1,192 @@
+﻿@model ExpatManager.Models.AgreementDetail
+@{
+    ViewBag.Title = "Print Agreement Detail";
+}
+<h2>
+    Rental Record - @Html.DisplayFor(model => model.Expatriates.FullNameCIF)
+</h2>
+<fieldset>
+    <legend>Details</legend>
+    <div class="span-3">
+        <div class="display-label">@Html.LabelFor(model => model.Expatriates.FullName)</div>
+        <div class="display-label">@Html.LabelFor(model => model.Expatriates.CostCode)</div>
+        <div class="display-label">
+            Address Detail:</div>
+        <div class="display-label">@Html.LabelFor(model => model.Address1)</div>
+        <div class="display-label"></div>
+        <div class="display-label"></div>
+        <div class="display-label">@Html.LabelFor(model => model.PostCode)</div>
+    </div>
+    <div class="span-5">
+        <div class="display-field">@Html.DisplayFor(model => model.Expatriates.FullName)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.Expatriates.CostCode)</div>
+        <div class="display-field">
+        </div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.Address1)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.Address2)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.Address3)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.PostCode)</div>
+    </div>
+    <div class="span-3">
+        <div class="display-label">@Html.LabelFor(model => model.Expatriates.CIF)</div>
+        <div class="display-label">
+        </div>
+        <div class="display-label">
+            Bank Detail:</div>
+        @if (Model.LandlordBankDetails != null)
+        {
+            <div class="display-label">@Html.LabelFor(model => model.LandlordBankDetails.BankName)</div>
+            <div class="display-label">@Html.LabelFor(model => model.LandlordBankDetails.SortCode)</div>
+            <div class="display-label">@Html.LabelFor(model => model.LandlordBankDetails.BankAccountNo)</div>
+            <div class="display-label">@Html.LabelFor(model => model.LandlordBankDetails.AccountName)</div>
+            <div class="display-label">@Html.LabelFor(model => model.Reference)</div>
+        }
+    </div>
+    <div class="span-5">
+        <div class="display-field">@Html.DisplayFor(model => model.Expatriates.CIF)</div>
+        <div class="display-label">
+        </div>
+        <div class="display-label">
+        </div>
+        @if (Model.LandlordBankDetails != null)
+        {
+            <div class="display-field">@Html.DisplayFor(model => model.LandlordBankDetails.BankName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.LandlordBankDetails.SortCode)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.LandlordBankDetails.BankAccountNo)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.LandlordBankDetails.AccountName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Reference)</div>
+        }
+    </div>
+    <div class="span-3">
+        <div class="display-label">@Html.LabelFor(model => model.AgreementNo)</div>
+        <div class="display-label">
+        </div>
+        <div class="display-label">
+            Agent Detail:</div>
+        @if (Model.LandlordBankDetails.AgentDetails != null && Model.LandlordBankDetails.AgentDetails.AgentDetailID != null)
+        {
+        <div class="display-label">@Html.LabelFor(model => model.LandlordBankDetails.AgentDetails.AgentName)</div>
+        <div class="display-label">@Html.LabelFor(model => model.LandlordBankDetails.AgentDetails.BranchOffice)</div>
+        <div class="display-label">@Html.LabelFor(model => model.LandlordBankDetails.AgentDetails.Email)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.LandlordBankDetails.AgentDetails.Address1)</div>
+        <div class="display-label-multiline">&nbsp;</div>
+        <div class="display-label-multiline">&nbsp;</div>
+        <div class="display-label">@Html.LabelFor(model => model.LandlordBankDetails.AgentDetails.PostCode)</div>
+        <div class="display-label">@Html.LabelFor(model => model.LandlordBankDetails.AgentDetails.TelNo)</div>
+        <div class="display-label">@Html.LabelFor(model => model.LandlordBankDetails.AgentDetails.Fax)</div>
+        }
+    </div>
+    <div class="span-5">
+        <div class="display-field">@Html.DisplayFor(model => model.AgreementNo)</div>
+        <div class="display-field">
+        </div>
+        <div class="display-field">
+        </div>
+        @if (Model.LandlordBankDetails.AgentDetails != null && Model.LandlordBankDetails.AgentDetails.AgentDetailID != null)
+        {
+            <div class="display-field">@Html.DisplayFor(model => model.LandlordBankDetails.AgentDetails.AgentName)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.LandlordBankDetails.AgentDetails.BranchOffice)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.LandlordBankDetails.AgentDetails.Email)</div>
+            <div class="display-field-multiline">@Html.DisplayFor(model => model.LandlordBankDetails.AgentDetails.Address1)</div>
+            <div class="display-field-multiline">@Html.DisplayFor(model => model.LandlordBankDetails.AgentDetails.Address2)</div>
+            <div class="display-field-multiline">@Html.DisplayFor(model => model.LandlordBankDetails.AgentDetails.Address3)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.LandlordBankDetails.AgentDetails.PostCode)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.LandlordBankDetails.AgentDetails.TelNo)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.LandlordBankDetails.AgentDetails.Fax)</div>
+        }
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Agreement Details</legend>
+    <div class="span-8">
+        <div class="span-3">
+            <div class="display-label">@Html.LabelFor(model => model.StartDate)</div>
+            <div class="display-label">@Html.LabelFor(model => model.ExpireDate)</div>
+            <div class="display-label">@Html.LabelFor(model => model.Length)</div>
+            <div class="display-label">@Html.LabelFor(model => model.TotalAmount)</div>
+        </div>
+        <div class="span-4">
+            <div class="display-field">@Html.DisplayFor(model => model.StartDate)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.ExpireDate)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Length)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.TotalAmount)</div>
+        </div>
+    </div>
+    <div class="span-8">
+        <div class="span-4">
+            <div class="display-label">@Html.LabelFor(model => model.MonthlyPayment)</div>
+            <div class="display-label">@Html.LabelFor(model => model.ProRataPayment)</div>
+            <div class="display-label">@Html.LabelFor(model => model.ProRataPaymentDate)</div>
+            <div class="display-label">@Html.LabelFor(model => model.TerminationDate)</div>
+        </div>
+        <div class="span-3">
+            <div class="display-field">@Html.DisplayFor(model => model.MonthlyPayment)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.ProRataPayment)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.ProRataPaymentDate)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.TerminationDate)</div>
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Agreeement Payment Details</legend>
+    <div>
+        <table>
+            <tr>
+                <th>
+                    Month
+                </th>
+                <th>
+                    Cost Code
+                </th>
+                <th>
+                    Regular Amount
+                </th>
+                <th>
+                    Irregular Amount
+                </th>
+                <th>
+                    Total Amount
+                </th>
+            </tr>
+            @foreach (var item in Model.AgreementPayments)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentDateMonthYear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CostCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MonthlyPayment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProRataPayment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalAmount)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</fieldset>
+<br />
+<div class="footer">
+    Initial pro-rota payment is paid to the beneficiary by the BTMU UFJ on the pro-rota
+    payment date shown above.
+    <br />
+    Following payments to be paid by the SG Hambros.
+    <br />
+    <br />
+    The information contained herein and is privileged and confidential and is intended
+    for the sole use of the SG Hambros Private Banking. If you are not the addressee,
+    any disclosure, reproduction, distribution, or other dissemination or use of this
+    communication is strictly prohibited. If you have received this transmission in
+    error, please contact the author immediately.
+</div>
+<br />
+<div class="span-24">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AgreementDetailID }) |
+    @Html.ActionLink("Back to Expatriate Details", "Details", "Expatriate", new { id = Model.ExpatriateID }, null)
+</div>

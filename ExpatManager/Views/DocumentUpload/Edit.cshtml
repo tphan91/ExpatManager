@@ -1,0 +1,99 @@
+﻿@model ExpatManager.Models.DocumentUpload
+
+@{
+    ViewBag.Title = "Edit Document Upload";
+}
+
+<h2>Edit Document Upload</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>DocumentUpload</legend>
+
+        @Html.HiddenFor(model => model.DocumentUploadID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FileName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FileName)
+            @Html.ValidationMessageFor(model => model.FileName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FileType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FileType)
+            @Html.ValidationMessageFor(model => model.FileType)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FileSize)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FileSize)
+            @Html.ValidationMessageFor(model => model.FileSize)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DocumentDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DocumentDescription)
+            @Html.ValidationMessageFor(model => model.DocumentDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ModifiedDateTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ModifiedDateTime)
+            @Html.ValidationMessageFor(model => model.ModifiedDateTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ModifiedBy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ModifiedBy)
+            @Html.ValidationMessageFor(model => model.ModifiedBy)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Status)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreateDateTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreateDateTime)
+            @Html.ValidationMessageFor(model => model.CreateDateTime)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreateBy)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreateBy)
+            @Html.ValidationMessageFor(model => model.CreateBy)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

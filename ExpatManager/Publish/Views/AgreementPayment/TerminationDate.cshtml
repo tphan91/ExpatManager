@@ -1,0 +1,46 @@
+﻿@model ExpatManager.Models.AgreementPayment
+@{
+    ViewBag.Title = "Agreement Payment Termination Date";
+}
+<h2>Agreement Payment
+    Termination Date</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Termination Date</legend>
+        <div class="span-8">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MonthlyPayment)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MonthlyPayment)
+                @Html.ValidationMessageFor(model => model.MonthlyPayment)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PaymentDate)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.PaymentDate)
+                @Html.ValidationMessageFor(model => model.PaymentDate)
+            </div>
+        </div>
+
+    </fieldset>
+        <p>
+            <input type="submit" value="Save" />
+        </p>    
+    <div class="editor-label-hidden">
+        @Html.HiddenFor(model => model.CreateDateTime)
+        @Html.HiddenFor(model => model.CreateBy)
+        @Html.HiddenFor(model => model.ModifiedDateTime)
+        @Html.HiddenFor(model => model.ModifiedBy)
+        @Html.HiddenFor(model => model.ModifiedBy)
+        @Html.HiddenFor(model => model.AgreementPaymentID)
+        @Html.HiddenFor(model => model.AgreementDetailID)
+    </div>
+}
+<div>
+    @Html.ActionLink("Back", "Details", "AgreementDetail", new { id = Model.AgreementDetailID }, null)
+</div>

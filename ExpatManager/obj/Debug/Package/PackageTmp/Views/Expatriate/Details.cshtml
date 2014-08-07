@@ -1,0 +1,281 @@
+﻿@model ExpatManager.Models.Expatriate
+@{
+    ViewBag.Title = "Expatriate Details - " + Model.FullNameCIF;
+}
+<h2>
+    Expatriate Details - @Html.DisplayFor(model => model.FullNameCIF)
+</h2>
+@Html.Partial("_DisplayForControl", Model)
+<fieldset>
+    <legend>Promotion Details</legend>
+    <div class="span-6">
+        <div class="display-label">
+            @Html.LabelFor(model => model.Promotion)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Promotion)
+        </div>
+    </div>
+    <div class="span-6">
+        <div class="display-label">
+            @Html.LabelFor(model => model.DateOfPromotion)</div>
+        <div class="display-field">
+        </div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DateOfPromotion)
+        </div>
+        <div class="display-field">
+        </div>
+    </div>
+</fieldset>
+<div class="span-28">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ExpatriateID })
+</div>
+@Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)
+<fieldset>
+    <legend>Agreement Details</legend>
+    <p>
+        @if (Model.AgreementDetails.Count > 0)
+        {
+            @Html.ActionLink("Create Agreement Extension", "CreateExtend", "AgreementDetail", new { id = Model.AgreementDetails.OrderByDescending(i => i.AgreementNo).First().AgreementDetailID }, null)
+        }
+        else
+        {
+            @Html.ActionLink("Create New Agreement Detail", "Create", "AgreementDetail", new { id = Model.ExpatriateID }, null)
+        }
+    </p>
+    <div>
+        <table>
+            <tr>
+                <th>
+                </th>
+                <th>
+                    Agreement No
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    Start Date
+                </th>
+                <th>
+                    Expire Date
+                </th>
+                <th>
+                    Termination Date
+                </th>
+                <th>
+                    Monthly Payment
+                </th>
+                <th>
+                    Total Contract Amount
+                </th>
+                <th>
+                    Status
+                </th>
+            </tr>
+            @{var agreementdetailid = 0; }
+            @foreach (var item in Model.AgreementDetails.OrderByDescending(i => i.AgreementNo))
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "AgreementDetail", new { id = item.AgreementDetailID }, null)|
+                        @Html.ActionLink("Details", "Details", "AgreementDetail", new { id = item.AgreementDetailID }, null)|
+                        @Html.ActionLink("Print", "Print", "AgreementDetail", new { id = item.AgreementDetailID }, null)|
+                        @Html.ActionLink("Delete", "Delete", "AgreementDetail", new { id = item.AgreementDetailID }, null)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AgreementNo)
+                    </td>
+                    <td>
+                        @(String.Format("{0}, {1}, {2}", item.Address1, item.Address2, item.PostCode))
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExpireDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TerminationDate).ToString().Replace("31/12/9999", "")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MonthlyPayment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalAmount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                </tr>
+                agreementdetailid = item.AgreementDetailID;
+            }
+        </table>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Family</legend>
+    <p>
+        @Html.ActionLink("Create New Family Member", "Create", "Family", new { id = Model.ExpatriateID }, null)
+    </p>
+    <div>
+        <table>
+            <tr>
+                <th>
+                </th>
+                <th>
+                    Family Type
+                </th>
+                <th>
+                    Arrive Date
+                </th>
+                <th>
+                    Leave Date
+                </th>
+                <th>
+                    Date Of Birth
+                </th>
+            </tr>
+            @foreach (var item in Model.Familys.OrderByDescending(i => i.ArriveDate))
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Family", new { id = item.FamilyID }, null) |
+                        @Html.ActionLink("Details", "Details", "Family", new { id = item.FamilyID }, null)
+                        |
+                        @if (Model.FamilyStatus.ToString().ToUpper().Equals("SPOUSE") && item.FamilyType.ToString().ToUpper().Equals("SPOUSE"))
+                        {
+                            @Html.ActionLink("Delete", "Delete", "Family", new { id = item.FamilyID }, null)
+                        }
+                        else
+                        { 
+                            @Html.ActionLink("Delete", "Delete", "Family", new { id = item.FamilyID }, null)
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FamilyType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ArriveDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LeaveDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Expatriate Documents</legend>
+    <p>
+        @Html.ActionLink("Create New Document", "Create", "ExpatriateDocumentUpload", new { id = Model.ExpatriateID, }, null)
+    </p>
+    <div>
+        <table>
+            <tr>
+                <th>
+                </th>
+                <th>
+                    File Name
+                </th>
+                <th>
+                    File Type
+                </th>
+                <th>
+                    File Size
+                </th>
+            </tr>
+            @foreach (var item in Model.ExpatriateDocumentUploads)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", "ExpatriateDocumentUpload", new { id = item.ExpatriateDocumentUploadID }, null)
+                    </td>
+                    <td>
+                        <a href="@(String.Format("/ExpatManagement/DocumentUpload/{0}", item.FileName))" target="_blank">@Html.DisplayFor(modelItem => item.FileName)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileSize)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Expatriate History</legend>
+    <div>
+        <table>
+            <tr>
+                <th>
+                    Job Grade
+                </th>
+                <th>
+                    Family Status
+                </th>
+                <th>
+                    Ceiling Value
+                </th>
+                <th>
+                    Cost Code
+                </th>
+                <th>
+                    Date Of Promotion
+                </th>
+                <th>
+                    Promotion
+                </th>
+                <th>
+                    Create By
+                </th>
+                <th>
+                    DateTime
+                </th>
+            </tr>
+            @foreach (var item in Model.ExpatriateHistorys)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JobGrade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FamilyStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CeilingValue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CostCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfPromotion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Promotion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateDateTime)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ExpatriateID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,106 @@
+﻿@model PagedList.IPagedList<ExpatManager.Models.DocumentUpload>
+@{
+    ViewBag.Title = "Document Upload Index";
+}
+<h2>Document Upload 
+    Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.ActionLink("File Name", "Index", new { sortOrder = ViewBag.SortParm1, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("File Type", "Index", new { sortOrder = ViewBag.SortParm2, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("File Size", "Index", new { sortOrder = ViewBag.SortParm3, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Document Description", "Index", new { sortOrder = ViewBag.SortParm4, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("ModelName", "Index", new { sortOrder = ViewBag.SortParm5, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            CreateDateTime
+        </th>
+        <th>
+            CreateBy
+        </th>
+        <th>
+            CreateDateTime
+        </th>
+        <th>
+            CreateBy
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DocumentUploadID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DocumentUploadID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DocumentUploadID })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateBy)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    &nbsp;
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { pageNo = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink("< Prev", "Index", new { pageNo = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw("&nbsp;");
+        @:< Prev
+                }
+    &nbsp;
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { pageNo = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink(">>", "Index", new { pageNo = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw("&nbsp;")
+        @:>>
+                }
+</div>

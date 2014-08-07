@@ -1,0 +1,46 @@
+﻿@model ExpatManager.Models.Expatriate
+@{
+    string path = System.Web.Configuration.WebConfigurationManager.AppSettings["StaffPicPass"];
+    string imagepath = string.Format(@"{0}{1}.jpg", path, Model.CIF);
+}
+<fieldset>
+    <legend>Expatriate Information</legend>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.Title)</div>
+        <div class="display-label">@Html.LabelFor(model => model.FirstName)</div>
+        <div class="display-label">@Html.LabelFor(model => model.LastName)</div>
+        <div class="display-label">@Html.LabelFor(model => model.FamilyStatus)</div>
+        <div class="display-label">@Html.LabelFor(model => model.Comment)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.Title)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.FirstName)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.LastName)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.FamilyStatus)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.Comment)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.CIF)</div>
+        <div class="display-label">@Html.LabelFor(model => model.CostCode)</div>
+        <div class="display-label">@Html.LabelFor(model => model.JobGrade)</div>
+        <div class="display-label">@Html.LabelFor(model => model.CeilingValue)</div>
+        <div class="display-label">@Html.LabelFor(model => model.GMFlag)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.CIF)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.CostCode)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.JobGrade)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.CeilingValue)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.GMFlag)</div>
+    </div>
+    <div class="span-4">
+        <img id="imgPhoto" onerror="this.src='/expatmanagement/image/noPicture.gif';" src="@imagepath" style="height:110px;width:82px;border-width:0px;" alt="@Model.FullNameCIF" />
+    </div>
+</fieldset>
+@Html.HiddenFor(model => model.Title)
+@Html.HiddenFor(model => model.FirstName)
+@Html.HiddenFor(model => model.LastName)
+@Html.HiddenFor(model => model.FamilyStatus)
+@Html.HiddenFor(model => model.CIF)
+@Html.HiddenFor(model => model.JobGrade)
+@Html.HiddenFor(model => model.CeilingValue)

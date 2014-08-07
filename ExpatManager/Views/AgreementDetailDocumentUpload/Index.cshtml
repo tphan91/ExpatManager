@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ExpatManager.Models.AgreementDetailDocumentUpload>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            AgreementDetailID
+        </th>
+        <th>
+            FileName
+        </th>
+        <th>
+            FileType
+        </th>
+        <th>
+            FileSize
+        </th>
+        <th>
+            ModifiedDateTime
+        </th>
+        <th>
+            ModifiedBy
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            CreateDateTime
+        </th>
+        <th>
+            CreateBy
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgreementDetailID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FileSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateBy)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AgreementDetailDocumentUploadID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AgreementDetailDocumentUploadID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AgreementDetailDocumentUploadID })
+        </td>
+    </tr>
+}
+
+</table>

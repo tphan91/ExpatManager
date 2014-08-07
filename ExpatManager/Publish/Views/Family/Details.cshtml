@@ -1,0 +1,13 @@
+﻿@model ExpatManager.Models.Family
+@{
+    ViewBag.Title = "Family Member Details";
+}
+<h2>Family Member
+    Details</h2>
+@Html.Partial("~/Views/Expatriate/_DisplayForControl.cshtml", Model.Expatriates)
+@Html.Partial("_DisplayForControl", Model)
+@Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FamilyID }) |
+    @Html.ActionLink("Back to List", "Details", "Expatriate", new { id = Model.ExpatriateID }, null)
+</p>

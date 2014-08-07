@@ -1,0 +1,35 @@
+﻿@model ExpatManager.Models.CeilingTable
+@using ExpatManager.Models
+@using ExpatManager.Helper
+<fieldset>
+    <legend>Ceiling Table</legend>
+    <div class="span-6">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CeilingValue)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.JobGrade)
+        </div>
+    </div>
+    <div class="span-6">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CeilingValue)
+            @Html.ValidationMessageFor(model => model.CeilingValue)
+        </div>
+        <div class="editor-field">
+            @Html.EnumDropDownList("CeilingTable.JobGrade", Model.JobGrade)
+            @Html.ValidationMessageFor(model => model.JobGrade)
+        </div>
+    </div>
+    <div class="span-6">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FamilyStatus)
+        </div>
+    </div>
+    <div class="span-6">
+        <div class="editor-field">
+            @Html.EnumDropDownList("CeilingTable.FamilyStatus", Model.FamilyStatus)
+            @Html.ValidationMessageFor(model => model.FamilyStatus)
+        </div>
+    </div>
+</fieldset>

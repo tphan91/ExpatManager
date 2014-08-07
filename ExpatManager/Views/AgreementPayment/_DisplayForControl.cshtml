@@ -1,0 +1,32 @@
+﻿@model ExpatManager.Models.AgreementPayment
+<fieldset>
+    <legend>Agreement Payment</legend>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.CostCode)</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CostCode)
+        </div>
+        <div class="display-label">@Html.LabelFor(model => model.PaymentDate)</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.PaymentDate)
+        </div>
+    </div>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.ProRataPayment)</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.ProRataPayment)
+        </div>
+    </div>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.MonthlyPayment)</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.MonthlyPayment)
+        </div>
+    </div>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.TotalAmount)</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TotalAmount)
+        </div>
+    </div>
+</fieldset>

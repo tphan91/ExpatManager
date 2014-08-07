@@ -1,0 +1,32 @@
+﻿@model ExpatManager.Models.AgentDetail
+<fieldset>
+    <legend>Agent Detail</legend>
+    <div class="span-4">
+        <div class="editor-label">@Html.LabelFor(model => model.AgentName)</div>
+        <div class="editor-label">@Html.LabelFor(model => model.BranchOffice)</div>
+    </div>
+    <div class="span-8">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AgentName)
+            @Html.ValidationMessageFor(model => model.AgentName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BranchOffice)
+            @Html.ValidationMessageFor(model => model.BranchOffice)
+        </div>
+    </div>
+    <div class="span-4">
+        <div class="editor-label">@Html.LabelFor(model => model.ContactName)</div>
+        <div class="editor-label">@Html.LabelFor(model => model.Status)</div>
+    </div>
+    <div class="span-8">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ContactName)
+            @Html.ValidationMessageFor(model => model.ContactName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Status)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+    </div>
+</fieldset>

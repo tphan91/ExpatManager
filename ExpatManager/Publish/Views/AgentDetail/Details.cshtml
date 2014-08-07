@@ -1,0 +1,60 @@
+﻿@model ExpatManager.Models.AgentDetail
+@{
+    ViewBag.Title = "Agent Detail";
+}
+<h2>
+    Agent Detail</h2>
+@Html.Partial("_DisplayForControl", Model)
+@if (Model.LandlordBankDetails != null)
+{
+    <fieldset>
+    <legend>Bank Details</legend>
+    <div class="display-field">
+        @Html.ActionLink("Create New Bank Detail", "Create", "LandlordBankDetail", new { id = Model.AgentDetailID }, null)
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>
+                </th>
+                <th>
+                    Account Name
+                </th>
+                <th>
+                    Bank Name
+                </th>
+                <th>
+                    Bank Account No
+                </th>
+                <th>
+                    Sort Code
+                </th>
+            </tr>
+            @foreach (var item in Model.LandlordBankDetails)
+            {
+                <tr>
+                    <td>@Html.ActionLink("Edit", "Edit", "LandlordBankDetail", new { id = item.LandlordBankDetailID }, null)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AccountName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BankName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BankAccountNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SortCode)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    </fieldset>
+}    
+@Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AgentDetailID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

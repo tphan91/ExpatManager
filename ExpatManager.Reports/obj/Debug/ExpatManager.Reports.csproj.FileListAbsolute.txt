@@ -1,0 +1,12 @@
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\bin\Debug\ExpatManager.Reports.exe.config
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\bin\Debug\ExpatManager.Reports.exe
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\bin\Debug\ExpatManager.Reports.pdb
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\obj\Debug\ResolveAssemblyReference.cache
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\obj\Debug\ExpatManager.Reports.Form1.resources
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\obj\Debug\ExpatManager.Reports.Properties.Resources.resources
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\obj\Debug\GenerateResource.read.1.tlog
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\obj\Debug\GenerateResource.write.1.tlog
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\obj\Debug\RdlCompile.cache
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\obj\Debug\RdlCompile.compiled
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\obj\Debug\ExpatManager.Reports.exe
+D:\Source\Application\ExpatManager1.3\ExpatManager\ExpatManager.Reports\obj\Debug\ExpatManager.Reports.pdb

@@ -1,0 +1,269 @@
+﻿@model ExpatManager.Models.AgreementDetail
+<fieldset>
+    <legend>Agreement Detail</legend>
+    <div>
+        <div class="span-4">
+            <div class="display-label">@Html.LabelFor(model => model.AgreementNo)</div>
+            <div class="display-label">@Html.LabelFor(model => model.StartDate)</div>
+            <div class="display-label">@Html.LabelFor(model => model.ExpireDate)</div>
+            <div class="display-label">@Html.LabelFor(model => model.Length)</div>
+        </div>
+        <div class="span-4">
+            <div class="display-field">@Html.DisplayFor(model => model.AgreementNo)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.StartDate)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.ExpireDate)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Length)</div>
+        </div>
+        <div class="span-4">
+            <div class="display-label">@Html.LabelFor(model => model.MonthlyPayment)</div>
+            <div class="display-label">@Html.LabelFor(model => model.TotalAmount)</div>
+            <div class="display-label">@Html.LabelFor(model => model.ProRataPaymentDate)</div>
+            <div class="display-label">@Html.LabelFor(model => model.NoOfBedroom)</div>
+        </div>
+        <div class="span-4">
+            <div class="display-field">@Html.DisplayFor(model => model.MonthlyPayment)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.TotalAmount)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.ProRataPaymentDate)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.NoOfBedroom)</div>
+        </div>
+        <div class="span-4">
+            <div class="display-label">@Html.LabelFor(model => model.DepositAmount)</div>
+            <div class="display-label">@Html.LabelFor(model => model.CeilingBreach)</div>
+            <div class="display-label">@Html.LabelFor(model => model.ProRataPayment)</div>
+            <div class="display-label">@Html.LabelFor(model => model.Reference)</div>
+        </div>
+        <div class="span-4">
+            <div class="display-field">@Html.DisplayFor(model => model.DepositAmount)</div>
+            @{String style = Model.CeilingBreach > 0 ? "display-field-red" : "display-field";}
+            <div class="@style">@Html.DisplayFor(model => model.CeilingBreach)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.ProRataPayment)</div>
+            <div class="display-field">@Html.DisplayFor(model => model.Reference)</div>
+        </div>
+    </div>
+    <div class="span-24">
+        <div class="span-4">
+            <div class="display-label">@Html.LabelFor(model => model.Comment)</div>
+        </div>
+        <div class="span-19">
+            <div class="display-field-multiline">@Html.DisplayFor(model => model.Comment)</div>
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Required Documents</legend>
+    <div class="span-4">
+        <div class="display-label-multiline">@Html.LabelFor(model => model.CurrentAgreementSentToAgent)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.InitialChasedSignedAgreement)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.SignedAgreementReceived)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.IndemnityLetter)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.DepositDate)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.AccommodationForm)</div>
+    </div>
+    <div class="span-8">
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.CurrentAgreementSentToAgent)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.InitialChasedSignedAgreement)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.SignedAgreementReceived)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.IndemnityLetter)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.DepositDate)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.AccommodationForm)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label-multiline">@Html.LabelFor(model => model.InventoryCheckinExpat)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.InventoryCheckinAgent)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.ChasedInventory)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.InventoryComment)</div>
+    </div>
+    <div class="span-8">
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.InventoryCheckinExpat)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.InventoryCheckinAgent)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.ChasedInventory)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.InventoryComment)</div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Gas Safety Certificate</legend>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.GasExpiryDate)</div>
+        <div class="display-label">@Html.LabelFor(model => model.GasChaseDate)</div>
+    </div>
+    <div class="span-8">
+        <div class="display-field">@Html.DisplayFor(model => model.GasExpiryDate)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.GasChaseDate)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.GasNotRequired)</div>
+    </div>
+    <div class="span-8">
+        <div class="display-field">@Html.DisplayFor(model => model.GasNotRequired)</div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Current Council Tax</legend>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.CouncilNameProRata)</div>
+        <div class="display-label">@Html.LabelFor(model => model.DateSentToAPProRata)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-field">@Html.DisplayFor(model => model.CouncilNameProRata)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.DateSentToAPProRata)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.CouncilTaxAccountReferenceProRata)</div>
+        <div class="display-label">@Html.LabelFor(model => model.AccountAuthorisationProRata)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-field">@Html.DisplayFor(model => model.CouncilTaxAccountReferenceProRata)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.AccountAuthorisationProRata)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.CouncilTaxAmountProRata)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-field">@Html.DisplayFor(model => model.CouncilTaxAmountProRata)</div>
+    </div>
+    <div class="span-24">
+        <div class="span-4">
+            <div class="display-label">@Html.LabelFor(model => model.CouncilTaxCommentProRata)</div>
+        </div>
+        <div class="span-19">
+            <div class="display-field-multiline">@Html.DisplayFor(model => model.CouncilTaxCommentProRata)</div>
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Council Tax</legend>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.CouncilName)</div>
+        <div class="display-label">@Html.LabelFor(model => model.DateSentToAP)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-field">@Html.DisplayFor(model => model.CouncilName)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.DateSentToAP)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.CouncilTaxAccountReference)</div>
+        <div class="display-label">@Html.LabelFor(model => model.AccountAuthorisation)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-field">@Html.DisplayFor(model => model.CouncilTaxAccountReference)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.AccountAuthorisation)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.CouncilTaxAmount)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-field">@Html.DisplayFor(model => model.CouncilTaxAmount)</div>
+    </div>
+    <div class="span-24">
+        <div class="span-4">
+            <div class="display-label">@Html.LabelFor(model => model.CouncilTaxComment)</div>
+        </div>
+        <div class="span-19">
+            <div class="display-field-multiline">@Html.DisplayFor(model => model.CouncilTaxComment)</div>
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Council Tax Refund</legend>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.RefundReason)</div>
+        <div class="display-label">@Html.LabelFor(model => model.RefundAmount)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-field">@Html.DisplayFor(model => model.RefundReason)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.RefundAmount)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.CouncilContactedDate)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-field">@Html.DisplayFor(model => model.CouncilContactedDate)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.RefundDate)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-field">@Html.DisplayFor(model => model.RefundDate)</div>
+    </div>
+    <div class="span-24">
+        <div class="span-4">
+            <div class="display-label">@Html.LabelFor(model => model.RefundComment)</div>
+        </div>
+        <div class="span-19">
+            <div class="display-field-multiline">@Html.DisplayFor(model => model.RefundComment)</div>
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Renewal</legend>
+    <div class="span-4">
+        <div class="display-label-multiline">@Html.LabelFor(model => model.AccommodationSentToExpat)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.AgreementSentToAgent)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.ChasedSignedAgreement)</div>
+        <div class="display-label-multiline">@Html.LabelFor(model => model.AgreementReceivedFromAgent)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.AccommodationSentToExpat)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.AgreementSentToAgent)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.ChasedSignedAgreement)</div>
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.AgreementReceivedFromAgent)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label-multiline">@Html.LabelFor(model => model.RenewalComment)</div>
+    </div>
+    <div class="span-11">
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.RenewalComment)</div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Parking</legend>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.Parkings.ParkingAmount)</div>
+        <div class="display-label">@Html.LabelFor(model => model.Parkings.ParkingPaidBy)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-field">@Html.DisplayFor(model => model.Parkings.ParkingAmount)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.Parkings.ParkingPaidBy)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.Parkings.ParkingComment)</div>
+    </div>
+    <div class="span-11">
+        <div class="display-field-multiline">@Html.DisplayFor(model => model.Parkings.ParkingComment)</div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Termination</legend>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.DepartureReason)</div>
+        <div class="display-label">@Html.LabelFor(model => model.TerminationDate)</div>
+        <div class="display-label">@Html.LabelFor(model => model.NoticeServed)</div>
+        <div class="display-label">@Html.LabelFor(model => model.CleaningDate)</div>
+        <div class="display-label">@Html.LabelFor(model => model.RentPaidUntil)</div>
+        <div class="display-label">@Html.LabelFor(model => model.CheckOut)</div>
+        <div class="display-label">@Html.LabelFor(model => model.RentRefund)</div>
+    </div>
+    <div class="span-8">
+        <div class="display-field">@Html.DisplayFor(model => model.DepartureReason)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.TerminationDate)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.NoticeServed)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.CleaningDate)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.RentPaidUntil)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.CheckOut)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.RentRefund)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label-textbox">@Html.LabelFor(model => model.TerminationComment)</div>
+        <div class="display-label">@Html.LabelFor(model => model.DepositDeduction)</div>        
+        <div class="display-label">@Html.LabelFor(model => model.DepositReturned)</div>
+        <div class="display-label">@Html.LabelFor(model => model.DepositReceived)</div>
+        <div class="display-label-textbox">@Html.LabelFor(model => model.CleaningComment)</div>        
+    </div>
+    <div class="span-8">
+        <div class="display-field-textbox">@Html.DisplayFor(model => model.TerminationComment)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.DepositDeduction)</div>        
+        <div class="display-field">@Html.DisplayFor(model => model.DepositReturned)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.DepositReceived)</div>
+        <div class="display-field-textbox">@Html.DisplayFor(model => model.CleaningComment)</div>        
+    </div>
+</fieldset>

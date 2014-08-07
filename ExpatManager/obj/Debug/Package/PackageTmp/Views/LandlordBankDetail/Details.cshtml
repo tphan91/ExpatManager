@@ -1,0 +1,11 @@
+﻿@model ExpatManager.Models.LandlordBankDetail
+@{
+    ViewBag.Title = "Bank Detail";
+}
+<h2>Bank Detail</h2>
+@Html.Partial("_DisplayForControl", Model)
+@Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LandlordBankDetailID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

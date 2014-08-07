@@ -1,0 +1,58 @@
+﻿@model ExpatManager.Models.Expatriate
+@using ExpatManager.Helper
+
+<fieldset>
+    <legend>Expatriate Information</legend>
+        <div class="span-6">
+            <div class="editor-label">@Html.LabelFor(model => model.Title)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.CostCode)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.GMFlag)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.Comment)</div>
+        </div>
+        <div class="span-6">
+            <div class="editor-field">
+                @Html.EnumDropDownList("Expatriate.Title", Model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CostCode)
+                @Html.ValidationMessageFor(model => model.CostCode)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.GMFlag)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Comment)
+                @Html.ValidationMessageFor(model => model.Comment)
+            </div>
+        </div>
+        <div class="span-6">
+            <div class="editor-label">@Html.LabelFor(model => model.JobGrade)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.DateOfPromotion)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.Status)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.Promotion)</div>           
+            <div class="editor-label"></div>
+            <div class="editor-label"></div>
+            <div class="editor-label"></div>
+        </div>
+        <div class="span-6">
+            <div class="editor-field">
+                @Html.EnumDropDownList("Expatriate.JobGrade", Model.JobGrade)
+                @Html.ValidationMessageFor(model => model.JobGrade)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.DateOfPromotion)
+                @Html.ValidationMessageFor(model => model.DateOfPromotion)
+            </div>
+            <div class="editor-field">@Html.EditorFor(model => model.Status)</div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Promotion)
+                @Html.ValidationMessageFor(model => model.Promotion)
+            </div>
+        </div>
+</fieldset>
+        @Html.HiddenFor(model => model.ExpatriateID)
+        @Html.HiddenFor(model => model.CreateDateTime)
+        @Html.HiddenFor(model => model.CreateBy)
+        @Html.HiddenFor(model => model.ModifiedDateTime)
+        @Html.HiddenFor(model => model.ModifiedBy)

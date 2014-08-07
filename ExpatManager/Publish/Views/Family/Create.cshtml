@@ -1,0 +1,24 @@
+﻿@model ExpatManager.Models.Family
+@using ExpatManager.Helper
+@{
+    ViewBag.Title = "Create Family Member";
+}
+<h2>
+    Create Family Member</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.Partial("~/Views/Expatriate/_DisplayForControl.cshtml", Model.Expatriates)
+    @Html.Partial("_EditorForControl", Model)
+    @Html.HiddenFor(model => model.ExpatriateID)
+    @Html.HiddenFor(model => model.CreateBy)
+    @Html.HiddenFor(model => model.CreateDateTime)
+    @Html.HiddenFor(model => model.ModifiedBy)
+    @Html.HiddenFor(model => model.ModifiedDateTime)
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+}
+<div>
+    @Html.ActionLink("Back", "Details", "Expatriate", new { id = Model.ExpatriateID }, null)
+</div>

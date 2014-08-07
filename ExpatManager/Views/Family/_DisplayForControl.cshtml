@@ -1,0 +1,24 @@
+﻿@model ExpatManager.Models.Family
+<fieldset>
+    <legend>Family Details</legend>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.FamilyType)</div>
+        <div class="display-label">@Html.LabelFor(model => model.LeaveDate)</div>
+        <div class="display-label">@Html.LabelFor(model => model.Status)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.FamilyType, new { @readonly = true })</div>
+        <div class="display-field">@Html.DisplayFor(model => model.ArriveDate)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.Status)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.ArriveDate)</div>
+        <div class="display-label">@Html.LabelFor(model => model.DateOfBirth)</div>
+        
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.LeaveDate)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.DateOfBirth)
+        </div>
+    </div>
+</fieldset>

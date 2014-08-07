@@ -1,0 +1,20 @@
+﻿@model ExpatManager.Models.AgentDetail
+@{
+    ViewBag.Title = "Delete Agent Detail" ;
+}
+<h2>
+    Delete Agent Detail</h2>
+<p class="error">@ViewBag.ErrorMessage</p>
+<h3>
+    Are you sure you want to delete this?</h3>
+@Html.Partial("_DisplayForControl", Model)
+@Html.Partial("~/Views/Shared/DisplayTemplates/ContactControl.cshtml", Model)    
+@Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Delete" />
+        |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

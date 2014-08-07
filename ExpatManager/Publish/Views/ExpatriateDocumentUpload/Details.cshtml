@@ -1,0 +1,13 @@
+﻿@model ExpatManager.Models.ExpatriateDocumentUpload
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+@Html.Partial("~/Views/Expatriate/_DisplayForControl.cshtml", Model.Expatriates)
+@Html.Partial("_DisplayForControl", Model)
+@Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)    
+<p>
+    @Html.ActionLink("Back to Expatriate Details", "Details", "Expatriate", new { id = Model.ExpatriateID }, null)
+</p>

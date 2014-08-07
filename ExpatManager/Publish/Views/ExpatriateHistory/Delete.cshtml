@@ -1,0 +1,73 @@
+﻿@model ExpatManager.Models.ExpatriateHistory
+
+@{
+    ViewBag.Title = "Delete Expatriate History";
+}
+
+<h2>Delete Expatriate History</h2>
+<p class="error">@ViewBag.ErrorMessage</p>
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Expatriate History</legend>
+
+    <div class="display-label">@Html.LabelFor(model => model.ExpatriateID)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ExpatriateID)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.JobGrade)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.JobGrade)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.CeilingValue)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CeilingValue)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.CostCentre)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CostCentre)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Promotion)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Promotion)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.DateOfPromotion)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfPromotion)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Status)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Status)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.CreateDateTime)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreateDateTime)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.CreateBy)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CreateBy)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.ModifiedDateTime)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedDateTime)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.ModifiedBy)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ModifiedBy)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

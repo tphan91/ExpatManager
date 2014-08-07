@@ -1,0 +1,38 @@
+﻿@model ExpatManager.Models.LandlordBankDetail
+<fieldset>
+    <legend>Bank Detail</legend>
+    @Html.HiddenFor(model => model.LandlordBankDetailID)
+    <div class="span-6">
+        <div class="editor-label">@Html.LabelFor(model => model.AccountName)</div>
+        <div class="editor-label">@Html.LabelFor(model => model.BankName)</div>
+        <div class="editor-label">@Html.LabelFor(model => model.Status)</div>
+    </div>
+    <div class="span-6">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AccountName)
+            @Html.ValidationMessageFor(model => model.AccountName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BankName)
+            @Html.ValidationMessageFor(model => model.BankName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Status)
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+    </div>
+    <div class="span-6">
+        <div class="editor-label">@Html.LabelFor(model => model.BankAccountNo)</div>
+        <div class="editor-label">@Html.LabelFor(model => model.SortCode)</div>
+    </div>
+    <div class="span-6">
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BankAccountNo)
+            @Html.ValidationMessageFor(model => model.BankAccountNo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SortCode)
+            @Html.ValidationMessageFor(model => model.SortCode)
+        </div>
+    </div>
+</fieldset>

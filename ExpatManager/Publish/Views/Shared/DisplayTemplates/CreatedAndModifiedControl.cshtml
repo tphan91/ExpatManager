@@ -1,0 +1,22 @@
+﻿@model ExpatManager.Models.ModifiedBaseClass
+<fieldset>
+    <legend>Updates</legend>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.CreateBy)</div>
+        <div class="display-label">@Html.LabelFor(model => model.ModifiedBy)</div>
+        <div class="display-label">@Html.LabelFor(model => model.Status)</div>
+    </div>
+    <div class="span-8">
+        <div class="display-field">@Html.DisplayFor(model => model.CreateBy)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.ModifiedBy)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.Status)</div>
+    </div>
+    <div class="span-4">
+        <div class="display-label">@Html.LabelFor(model => model.CreateDateTime)</div>
+        <div class="display-label">@Html.LabelFor(model => model.ModifiedDateTime)</div>
+    </div>
+    <div class="span-8">
+        <div class="display-field">@Html.DisplayFor(model => model.CreateDateTime)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.ModifiedDateTime)</div>
+    </div>
+</fieldset>

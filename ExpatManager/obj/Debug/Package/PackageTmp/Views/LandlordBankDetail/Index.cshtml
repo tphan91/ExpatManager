@@ -1,0 +1,88 @@
+﻿@model PagedList.IPagedList<ExpatManager.Models.LandlordBankDetail>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Bank Detail Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Search: @Html.TextBox("Search", ViewBag.CurrentFilter as string)
+        &nbsp;
+        <input type="submit" value="Search" /></p>
+}
+<table>
+    <tr>
+        <th>
+        </th>
+        <th>
+            AgreementDetailID
+        </th>
+        <th>
+            @Html.ActionLink("Account Name", "Index", new { sortOrder = ViewBag.AccountNameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Bank Name", "Index", new { sortOrder = ViewBag.BankNameSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Bank Account No", "Index", new { sortOrder = ViewBag.BankAccountNoSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Sort Code", "Index", new { sortOrder = ViewBag.SortCodeSortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.LandlordBankDetailID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.LandlordBankDetailID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.LandlordBankDetailID })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BankAccountNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SortCode)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    &nbsp;
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { pageNo = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink("< Prev", "Index", new { pageNo = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw("&nbsp;");
+        @:< Prev
+    }
+    &nbsp;
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { pageNo = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink(">>", "Index", new { pageNo = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw("&nbsp;")
+        @:>>
+    }
+</div>

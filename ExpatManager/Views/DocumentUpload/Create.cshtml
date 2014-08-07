@@ -1,0 +1,30 @@
+﻿@model ExpatManager.Models.DocumentUpload
+@{
+    ViewBag.Title = "Create Document Upload";
+}
+<h2>
+    Create Document Upload</h2>
+@using (Html.BeginForm("Upload", "DocumentUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>DocumentUpload</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DocumentDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DocumentDescription)
+            @Html.ValidationMessageFor(model => model.DocumentDescription)
+        </div>
+        <div>
+            <label for="fileUpload">File upload</label>
+            <input type="file" id="fileUpload" name="fileUpload" />
+        </div>
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

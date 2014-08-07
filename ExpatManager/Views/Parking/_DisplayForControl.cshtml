@@ -1,0 +1,18 @@
+﻿@model ExpatManager.Models.Parking
+<fieldset>
+    <legend>Ceiling Table</legend>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.ParkingAmount)</div>
+        <div class="display-label">@Html.LabelFor(model => model.ParkingAmount)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.ParkingPaidBy)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.ParkingPaidBy)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.ParkingComment)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.ParkingComment)</div>
+    </div>
+</fieldset>

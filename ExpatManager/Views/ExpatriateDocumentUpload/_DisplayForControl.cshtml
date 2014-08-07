@@ -1,0 +1,19 @@
+﻿@model ExpatManager.Models.ExpatriateDocumentUpload
+<fieldset>
+    <legend>Document Details</legend>
+    <div class="span-6">
+        <div class="display-label">File Name</div>
+        <div class="display-label">File Size</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.FileName)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.FileSize)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-label">File Type</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.FileType)
+        </div>
+    </div>
+</fieldset>

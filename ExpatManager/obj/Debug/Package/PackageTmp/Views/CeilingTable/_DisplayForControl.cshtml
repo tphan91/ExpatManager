@@ -1,0 +1,18 @@
+﻿@model ExpatManager.Models.CeilingTable
+<fieldset>
+    <legend>Ceiling Table</legend>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.CeilingValue)</div>
+        <div class="display-label">@Html.LabelFor(model => model.FamilyStatus)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.CeilingValue)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.FamilyStatus)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.JobGrade)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.JobGrade)</div>
+    </div>
+</fieldset>

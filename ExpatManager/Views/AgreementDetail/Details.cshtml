@@ -1,0 +1,197 @@
+﻿@model ExpatManager.Models.AgreementDetail
+@{
+    ViewBag.Title = "Agreement Detail";
+}
+<h2>
+    Agreement Detail - @Html.DisplayFor(model => model.Expatriates.FullNameCIF)</h2>
+@Html.Partial("~/Views/Expatriate/_DisplayForControl.cshtml", Model.Expatriates)
+@Html.Partial("~/Views/Shared/DisplayTemplates/ContactControl.cshtml", Model)
+@Html.Partial("_DisplayForControl", Model)
+<fieldset>
+    <legend>Agreeement Detail Documents</legend>
+    <p>
+        @Html.ActionLink("Create New Document", "Create", "AgreementDetailDocumentUpload", new { id = Model.AgreementDetailID, }, null)
+    </p>
+    <div>
+        <table>
+            <tr>
+                <th>
+                </th>
+                <th>
+                    File Name
+                </th>
+                <th>
+                    Uploaded By
+                </th>
+                <th>
+                    Uploaded Date
+                </th>
+                <th>
+                    Second Checker
+                </th>
+                <th>
+                    Checked By
+                </th>
+                <th>
+                    Checked Date
+                </th>
+            </tr>
+            @foreach (var item in Model.AgreementDetailDocumentUploads.Where(i => i.DocumentTypeId == 0).ToList())
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "AgreementDetailDocumentUpload", new { id = item.AgreementDetailDocumentUploadID }, null)
+                        |
+                        @Html.ActionLink("Delete", "Delete", "AgreementDetailDocumentUpload", new { id = item.AgreementDetailDocumentUploadID }, null)
+                    </td>
+                    <td>
+                        <a href="@(String.Format("/ExpatManagement/DocumentUpload/{0}", item.FileName))" target="_blank">@Html.DisplayFor(modelItem => item.FileName)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreateDateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SecondChecker)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ModifiedDateTime)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Agreeement Payment Details</legend>
+    <p>
+        @if (Model.ShowPaymentCreateLink)
+        {
+            @Html.ActionLink("Create New Agreement Payment", "CreateMultiple", "AgreementPayment", new { id = Model.AgreementDetailID, }, null)
+        }
+        else
+        { 
+            @Html.ActionLink("Termination Date", "TerminationDate", "AgreementPayment", new { id = Model.AgreementDetailID, }, null)<br />
+        }
+    </p>
+    <p>
+    </p>
+    <div>
+        <table>
+            <tr>
+                <th>
+                </th>
+                <th>
+                    Month
+                </th>
+                <th>
+                    Cost Code
+                </th>
+                <th>
+                    Regular Amount
+                </th>
+                <th>
+                    Irregular Amount
+                </th>
+                <th>
+                    Total Amount
+                </th>
+            </tr>
+            @{
+               var _agreementPaymentId=0;  
+               foreach (var item in Model.AgreementPayments)
+                {
+                    <tr>
+                        <td>@Html.ActionLink("Edit", "Edit", "AgreementPayment", new { id = item.AgreementPaymentID }, null)
+                            |
+                            @Html.ActionLink("Delete", "Delete", "AgreementPayment", new { id = item.AgreementPaymentID }, null)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PaymentDateMonthYear)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CostCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MonthlyPayment)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProRataPayment)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalAmount)
+                        </td>
+                    </tr>
+                    _agreementPaymentId = item.AgreementPaymentID; 
+                }
+            }
+        </table>
+                @if (!Model.ShowPaymentCreateLink)
+                {
+                    @Html.ActionLink("Create Additional Payment", "Create", "AgreementPayment", new { id = _agreementPaymentId, }, null)
+                }
+    </div>
+</fieldset>
+@if (Model.LandlordBankDetails.AgentDetails != null)
+{
+    @Html.Partial("~/Views/AgentDetail/_DisplayForControl.cshtml", Model.LandlordBankDetails.AgentDetails)
+}
+@if (Model.LandlordBankDetails != null)
+{
+    @Html.Partial("~/Views/LandlordBankDetail/_DisplayForControl.cshtml", Model.LandlordBankDetails)
+}
+<fieldset>
+    <legend>Letters</legend>
+    <table>
+        <tr>
+            <td>
+                <a href="http://ld1na665/ReportServer?%2fUserReports%2fCorporateServices%2fProcurement%2fEXPATRIATE+MANAGEMENT+BANK+STAFF+INDEMNITY&rs%3aCommand=Render&rs%3AFormat=WORD&AGREEMENTDETAILID=@Model.AgreementDetailID" target="_blank">
+                    BANK STAFF INDEMNITY</a>
+            </td>
+            <td>
+                <a href="http://ld1na665/ReportServer?%2fUserReports%2fCorporateServices%2fProcurement%2fEXPATRIATE+MANAGEMENT+BANK+STAFF+INDEMNITY+CHOICE&rs%3aCommand=Render&rs%3AFormat=WORD&AGREEMENTDETAILID=@Model.AgreementDetailID" target="_blank">
+                    WDB DEPOSIT HOLDING FORM</a>
+            </td>
+            <!--<td><a href="http://ld1na665/ReportServer?%2fUserReports%2fCorporateServices%2fProcurement%2fEXPATRIATE+MANAGEMENT+BANK+SGH+COVER+FAX+RENT+STOP&rs%3aCommand=Render&rs%3AFormat=WORD&AGREEMENTDETAILID=@Model.AgreementDetailID" target="_blank">BANK STAFF INDEMNITY CHOICE</a></td>-->
+        </tr>
+        <tr>
+            <td>
+                <a href="http://ld1na665/ReportServer?%2fUserReports%2fCorporateServices%2fProcurement%2fEXPATRIATE+MANAGEMENT+BANK+DEPOSIT+HOLDING+FORM&rs%3aCommand=Render&rs%3AFormat=WORD&AGREEMENTDETAILID=@Model.AgreementDetailID" target="_blank">
+                    BANK COVER LETTER - NEW TENANCY</a>
+            </td>
+            <td>
+                <a href="http://ld1na665/ReportServer?%2fUserReports%2fCorporateServices%2fProcurement%2fEXPATRIATE+MANAGEMENT+BANK+COVER+RENEWAL&rs%3aCommand=Render&rs%3AFormat=WORD&AGREEMENTDETAILID=@Model.AgreementDetailID" target="_blank">
+                    BANK COVER LETTER - RENEWAL</a>
+            </td>
+            <!--<td><a href="http://ld1na665/ReportServer?%2fUserReports%2fCorporateServices%2fProcurement%2fEXPATRIATE+MANAGEMENT+BANK+COVER+NEW+TENANCY&rs%3aCommand=Render&rs%3AFormat=WORD&AGREEMENTDETAILID=@Model.AgreementDetailID" target="_blank">BANK SGH COVER FAX RENT STOP</a></td>-->
+        </tr>
+        <tr>
+            <td>
+                <a href="/ExpatManagement/documentupload/AccommodationForm.doc" target="_blank">ACCOMMODATION
+                    FORM</a>
+            </td>
+            <td>
+                <a href="http://ld1na665/ReportServer?%2fUserReports%2fCorporateServices%2fProcurement%2fEXPATRIATE+MANAGEMENT+BANK+STAFF+INDEMNITY+CHOICE+TO+MOVE&rs%3aCommand=Render&rs%3AFormat=WORD&AGREEMENTDETAILID=@Model.AgreementDetailID" target="_blank">
+                    BANK STAFF INDEMNITY CHOICE TO MOVE</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="http://ld1na665/ReportServer?%2fUserReports%2fCorporateServices%2fProcurement%2fEXPATRIATE+MANAGEMENT+SIGNATURE+LETTER&rs%3aCommand=Render&rs%3AFormat=WORD&AGREEMENTDETAILID=@Model.AgreementDetailID" target="_blank">
+                    BTMU's SIGNATURE LETTER</a>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+@Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AgreementDetailID }) |
+    @Html.ActionLink("Back to Expatriate Details", "Details", "Expatriate", new { id = Model.ExpatriateID }, null)
+</p>

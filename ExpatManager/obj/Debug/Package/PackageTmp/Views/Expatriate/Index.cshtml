@@ -1,0 +1,105 @@
+﻿@model PagedList.IPagedList<ExpatManager.Models.Expatriate>
+           
+@{
+    ViewBag.Title = "Expatriate Index";
+}
+<h2>Expatriate 
+    Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Search: @Html.TextBox("Search", ViewBag.CurrentFilter as string)
+        &nbsp;
+        <input type="submit" value="Search" /></p>
+}
+<table>
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.ActionLink("CIF", "Index", new { sortOrder = ViewBag.SortParm1, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.SortParm2, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Full Name", "Index", new { sortOrder = ViewBag.SortParm3, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Cost Code", "Index", new { sortOrder = ViewBag.SortParm4, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            Job Grade
+        </th>
+        <th>
+            Family Status
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit",  "Edit", new { id = item.ExpatriateID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ExpatriateID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ExpatriateID })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CIF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FamilyStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+    of @Model.PageCount
+    &nbsp;
+    @if (Model.HasPreviousPage)
+    {
+        @Html.ActionLink("<<", "Index", new { pageNo = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink("< Prev", "Index", new { pageNo = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:<<
+        @Html.Raw("&nbsp;");
+        @:< Prev
+                }
+    &nbsp;
+    @if (Model.HasNextPage)
+    {
+        @Html.ActionLink("Next >", "Index", new { pageNo = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+        @Html.Raw("&nbsp;");
+        @Html.ActionLink(">>", "Index", new { pageNo = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+    }
+    else
+    {
+        @:Next >
+        @Html.Raw("&nbsp;")
+        @:>>
+                }
+</div>

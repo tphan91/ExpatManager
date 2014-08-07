@@ -1,0 +1,73 @@
+﻿@model ExpatManager.Models.AgreementPayment
+@{
+    ViewBag.Title = "Edit Agreement Payment";
+}
+<h2>
+    Edit Agreement Payment</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.Partial("~/Views/Expatriate/_DisplayForControl.cshtml", Model.AgreementDetail.Expatriates)
+    @Html.Partial("~/Views/AgreementDetail/_DisplayForControl.cshtml", Model.AgreementDetail)
+    <fieldset>
+        <legend>Agreement Payment</legend>
+        <div class="span-6">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.CostCode)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CostCode)
+                @Html.ValidationMessageFor(model => model.CostCode)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.TotalAmount)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TotalAmount)
+                @Html.ValidationMessageFor(model => model.TotalAmount)
+            </div>
+        </div>
+        <div class="span-6">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MonthlyPayment)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MonthlyPayment)
+                @Html.ValidationMessageFor(model => model.MonthlyPayment)
+            </div>
+        </div>
+        <div class="span-6">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PaymentDate)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.PaymentDate)
+                @Html.ValidationMessageFor(model => model.PaymentDate)
+            </div>
+        </div>
+        <div class="span-6">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ProRataPayment)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ProRataPayment)
+                @Html.ValidationMessageFor(model => model.ProRataPayment)
+            </div>
+        </div>
+    </fieldset>
+    @Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)
+    <p>
+        <input type="submit" value="Save" />
+        |
+        @Html.ActionLink("Back", "Details", "AgreementDetail", new { id = Model.AgreementDetailID }, null)
+    </p>
+    <div class="editor-label-hidden">
+        @Html.HiddenFor(model => model.CreateDateTime)
+        @Html.HiddenFor(model => model.CreateBy)
+        @Html.HiddenFor(model => model.ModifiedDateTime)
+        @Html.HiddenFor(model => model.ModifiedBy)
+        @Html.HiddenFor(model => model.ModifiedBy)
+        @Html.HiddenFor(model => model.AgreementPaymentID)
+        @Html.HiddenFor(model => model.AgreementDetailID)
+    </div>
+}

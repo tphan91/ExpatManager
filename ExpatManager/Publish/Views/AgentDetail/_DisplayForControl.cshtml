@@ -1,0 +1,23 @@
+﻿@model ExpatManager.Models.AgentDetail
+<fieldset>
+    <legend>Agent Detail</legend>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.AgentName)</div>
+        <div class="display-label">@Html.LabelFor(model => model.BranchOffice)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.AgentName, new { @readonly = true })</div>
+        <div class="display-field">@Html.DisplayFor(model => model.BranchOffice, new { @readonly = true })</div>
+    </div>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.ContactName)</div>
+        <div class="display-label">
+        </div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.ContactName)</div>
+        <div class="display-label">
+        </div>
+    </div>
+    @Html.Partial("~/Views/Shared/DisplayTemplates/ContactControlNoFieldset.cshtml", Model)
+</fieldset>

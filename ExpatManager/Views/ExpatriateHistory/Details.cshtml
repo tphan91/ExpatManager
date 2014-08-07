@@ -1,0 +1,42 @@
+﻿@model ExpatManager.Models.ExpatriateHistory
+
+@{
+    ViewBag.Title = "Expatriate History Details";
+}
+
+<h2>Expatriate History Details</h2>
+
+<fieldset>
+    <legend>Expatriate History</legend>
+    @Html.HiddenFor(model => model.ExpatriateID)
+
+    <div class="display-label">@Html.LabelFor(model => model.JobGrade)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.JobGrade)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.CeilingValue)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CeilingValue)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.CostCode)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CostCode)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.Promotion)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Promotion)
+    </div>
+
+    <div class="display-label">@Html.LabelFor(model => model.DateOfPromotion)</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DateOfPromotion)
+    </div>
+</fieldset>
+@Html.Partial("~/Views/Shared/DisplayTemplates/CreatedAndModifiedControl.cshtml", Model)
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ExpatriateHistoryID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

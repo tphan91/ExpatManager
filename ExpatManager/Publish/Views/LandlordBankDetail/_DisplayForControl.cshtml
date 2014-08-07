@@ -1,0 +1,20 @@
+﻿@model ExpatManager.Models.LandlordBankDetail
+<fieldset>
+    <legend>Bank Detail</legend>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.AccountName)</div>
+        <div class="display-label">@Html.LabelFor(model => model.BankName)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.AccountName)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.BankName)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-label">@Html.LabelFor(model => model.BankAccountNo)</div>
+        <div class="display-label">@Html.LabelFor(model => model.SortCode)</div>
+    </div>
+    <div class="span-6">
+        <div class="display-field">@Html.DisplayFor(model => model.BankAccountNo)</div>
+        <div class="display-field">@Html.DisplayFor(model => model.SortCode)</div>
+    </div>
+</fieldset>

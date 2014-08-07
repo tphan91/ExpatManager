@@ -1,0 +1,62 @@
+﻿@model ExpatManager.Models.AgreementDetailDocumentUpload
+@using ExpatManager.Helper
+@{
+    ViewBag.Title = "Create";
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<h2>
+    Create</h2>
+@Html.Partial("~/Views/Expatriate/_DisplayForControl.cshtml", Model.AgreementDetails.Expatriates)
+@Html.Partial("~/Views/AgreementDetail/_DisplayForControl.cshtml", Model.AgreementDetails)
+@Html.Partial("~/Views/Shared/DisplayTemplates/ContactControl.cshtml", Model.AgreementDetails)
+@using (Html.BeginForm("Create", "AgreementDetailDocumentUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Agreement Detail Document Upload</legend>
+        <div class="span-4">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.FileName)
+            </div>
+        </div>
+        <div class="span-8">
+            <div class="editor-field">
+                @if (!IsPost)
+                {
+                    @FileUpload.GetHtml(
+            initialNumberOfFiles: 1,
+            allowMoreFilesToBeAdded: false,
+            includeFormTag: false,
+            addText: "Add another file",
+            uploadText: "Upload")
+                }
+            </div>
+        </div>
+        <div class="span-4">
+            <div class="editor-label">
+                @Html.LabelFor(model => model.SecondChecker)
+            </div>
+        </div>
+        <div class="span-8">
+            <div class="editor-label">
+                @Html.EditorFor(model => model.SecondChecker)
+            </div>
+        </div>
+    </fieldset>
+    <div class="editor-label-hidden">
+        @Html.HiddenFor(model => Model.FileName)
+        @Html.HiddenFor(model => Model.CreateDateTime)
+        @Html.HiddenFor(model => Model.CreateBy)
+        @Html.HiddenFor(model => model.ModifiedDateTime)
+        @Html.HiddenFor(model => model.ModifiedBy)
+        @Html.HiddenFor(model => model.DocumentType)
+        @Html.HiddenFor(model => model.DocumentTypeId)
+    </div> 
+    <p>
+        <input type="submit" value="Create" />
+    </p>    
+}
+<div>
+    @Html.ActionLink("Back to Agreement Details", "Details", "AgreementDetail", new { id = Model.AgreementDetailID }, null)
+</div>

@@ -1,0 +1,121 @@
+﻿@model ExpatManager.Models.AgreementDetail
+@{
+    ViewBag.Title = "Create";
+}
+<h2>
+    Create Agreement Detail - @Html.DisplayFor(model => model.Expatriates.FullNameCIF)</h2>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/AutoComplete.js")" type="text/javascript"></script>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(false, "Create was unsuccessful, please correct the errors and try again.")
+    @Html.Partial("~/Views/Expatriate/_DisplayForControl.cshtml", Model.Expatriates)
+    <fieldset>
+        <legend>Agreement Detail</legend>
+        <div class="span-4">
+            <div class="editor-label">@Html.LabelFor(model => model.AgreementNo)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.StartDate)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.MonthlyPayment)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.CouncilName)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.Reference)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.Comment)</div>
+        </div>
+        <div class="span-8">
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.AgreementNo, new { @readonly = true, @class = "text-box single-line" })
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.StartDate)
+                @Html.ValidationMessageFor(model => model.StartDate)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MonthlyPayment)
+                @Html.ValidationMessageFor(model => model.MonthlyPayment)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CouncilName)
+                @Html.ValidationMessageFor(model => model.CouncilName)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Reference)
+                @Html.ValidationMessageFor(model => model.Reference)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Comment)
+                @Html.ValidationMessageFor(model => model.Comment)
+            </div>
+            <div class="editor-field">
+            </div>
+            <div class="editor-field">
+            </div>
+            <div class="editor-field">
+            </div>
+        </div>
+        <div class="span-4">
+            <div class="editor-label">@Html.LabelFor(model => model.Length)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.ProRataPaymentDate)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.DepositAmount)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.CouncilTaxAmount)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.LandlordBankDetails.LongBankDetails)</div>
+            <div class="editor-label">@Html.LabelFor(model => model.AgreementDetailDocumentUploads)</div>
+        </div>
+        <div class="span-8">
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Length, new { @readonly = true, @class = "text-box single-line" })
+                @Html.ValidationMessageFor(model => model.Length)
+            </div>
+            <div class="editor-field">@Html.EditorFor(model => model.ProRataPaymentDate)
+                @Html.ValidationMessageFor(model => model.ProRataPaymentDate)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.DepositAmount)
+                @Html.ValidationMessageFor(model => model.DepositAmount)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.CouncilTaxAmount)
+                @Html.ValidationMessageFor(model => model.CouncilTaxAmount)
+            </div>
+            <div class="editor-field">
+                <input type="text" id="autocomplete" class="text-box single-line" name="key" data-autocomplete="@Url.Action("AutoCompleteData", "AgreementDetail")"  />
+                <input type="hidden" id="autocompleteid"  data-autocomplete="@Url.Action("AutoCompleteData", "AgreementDetail")"  />
+                @Html.ValidationMessageFor(model => model.LandlordBankDetails.LandlordBankDetailID)
+            </div>
+            <div class="editor-field">
+                @if (!IsPost)
+                {
+                    @FileUpload.GetHtml(
+            initialNumberOfFiles: 1,
+            allowMoreFilesToBeAdded: true,
+            includeFormTag: false,
+            addText: "Add another file",
+            uploadText: "Upload")
+                }
+            </div>
+        </div>
+    </fieldset>
+    @Html.Partial("~/Views/Shared/EditorTemplates/ContactControl.cshtml", Model)    
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+    <div class="editor-label-hidden">
+        @Html.HiddenFor(model => model.Expatriates.ModifiedDateTime)
+        @Html.HiddenFor(model => model.Expatriates.ModifiedBy)
+        @Html.HiddenFor(model => model.Expatriates.CreateDateTime)
+        @Html.HiddenFor(model => model.Expatriates.CreateBy)
+        @Html.HiddenFor(model => model.Status)
+        @Html.HiddenFor(model => model.Expatriates.CeilingValue)
+        @Html.HiddenFor(model => model.CostCode)
+        @Html.HiddenFor(model => model.ProRataPayment)
+        @Html.HiddenFor(model => model.ExpatriateID)
+        @Html.HiddenFor(model => model.ExpireDate)
+        @Html.HiddenFor(model => model.TerminationDate)
+        @Html.HiddenFor(model => model.CreateBy)
+        @Html.HiddenFor(model => model.CreateDateTime)
+        @Html.HiddenFor(model => model.ModifiedBy)
+        @Html.HiddenFor(model => model.ModifiedDateTime)
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to Expatriate Details", "Details", "Expatriate", new { id = Model.ExpatriateID }, null)
+</div>
